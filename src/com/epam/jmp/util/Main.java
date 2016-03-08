@@ -1,11 +1,17 @@
-package com.epam.jmp.generator;
+package com.epam.jmp.util;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+
 
 public class Main {
 
-	public static void main(String[] args) {
-		NameGenerator gen = new NameGenerator(2,15);
-		while (true) {
-			System.out.println(gen.generateNameString() + " " + gen.generateNameString());
+	public static void main(String[] args) throws Exception{
+		DateGenerator dg = new DateGenerator();
+		while (true){
+			Timestamp rand =dg.generateDateTimeFromInitDate();
+			Date date = new Date(rand.getTime());
+			System.out.println(date);
 		}
 
 	}
