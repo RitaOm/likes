@@ -1,8 +1,9 @@
 package com.epam.jmp.service;
 
-import com.epam.jmp.dao.impl.UserDAO;
 import com.epam.jmp.util.DateGenerator;
 import com.epam.jmp.util.TextGenerator;
+
+import com.epam.jmp.dao.impl.UserDAO;
 
 public class AbstractService {
 

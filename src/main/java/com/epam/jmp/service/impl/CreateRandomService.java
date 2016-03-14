@@ -3,11 +3,12 @@ package com.epam.jmp.service.impl;
 import java.sql.Date;
 import java.sql.SQLException;
 
+import com.epam.jmp.util.Properties;
+
 import com.epam.jmp.entity.User;
 import com.epam.jmp.service.AbstractService;
 import com.epam.jmp.service.Context;
 import com.epam.jmp.service.ICreateService;
-import com.epam.jmp.util.Properties;
 
 public class CreateRandomService extends AbstractService implements ICreateService{
 
