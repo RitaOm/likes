@@ -21,8 +21,8 @@ public class DateGenerator {
 		Date date = null;
 		int ageMode = random.nextInt(100);
 		for (int i = 0; i < statistics.getAgeStatistics().length - 1; i++) {
-			if (ageMode > statistics.getAgeStatistics()[i]
-					&& ageMode < statistics.getAgeStatistics()[i + 1]) {
+			if (ageMode >= statistics.getAgeStatistics()[i]
+					&& ageMode <= statistics.getAgeStatistics()[i + 1]) {
 				int upperBound_yearsAgo = statistics.getAgeRanges()[i];
 				int yearsInterval = statistics.getAgeRanges()[i+1] - upperBound_yearsAgo;				
 				date = generateDate(upperBound_yearsAgo, yearsInterval);

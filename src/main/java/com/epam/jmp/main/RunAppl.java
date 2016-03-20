@@ -1,18 +1,12 @@
 package com.epam.jmp.main;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
-import com.epam.jmp.util.DateGenerator;
-
+import com.epam.jmp.service.impl.CreateRandomService;
 
 public class RunAppl {
 
 	public static void main(String[] args) throws Exception{
-		DateGenerator dg = new DateGenerator();
-		Timestamp rand = dg.generateDateTimeFromInitDate();
-		Date date = new Date(rand.getTime());
-		System.out.println(date);
+		CreateRandomService service = new CreateRandomService();
+		service.createAll(null);
 	}
 
 }

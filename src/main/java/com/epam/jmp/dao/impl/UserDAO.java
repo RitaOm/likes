@@ -13,7 +13,7 @@ public class UserDAO extends AbstractDao<User> {
 
 	@Override
 	public String getCreateQuery() {
-		return "INSERT INTO user (id, name, surname, birthdate) VALUES (NULL, ?, ?, ?);";
+		return "INSERT INTO users (id, name, surname, birthdate) VALUES (NULL, ?, ?, ?);";
 	}
 
 	@Override
