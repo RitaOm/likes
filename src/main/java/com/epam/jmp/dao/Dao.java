@@ -9,7 +9,7 @@ public interface Dao<T> {
 	
 	public int getQuantity()  throws SQLException;
 	
-	public List<Integer> getIdsList()  throws SQLException;
+	public List<Integer> getIdsList(int id)  throws SQLException;
 
     public T getById(int id) throws SQLException;
 

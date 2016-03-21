@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.epam.jmp.connection.IconnectionDB;
@@ -51,9 +52,23 @@ public abstract class AbstractDao<T> implements Dao<T> {
 	}
 
 	@Override
-	public List<Integer> getIdsList() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Integer> getIdsList(int id) throws SQLException {
+		Connection connection = connectionDB.getConnection();
+		List<Integer> list = new ArrayList<Integer>();
+		String sql = getIdsListQuery();
+		try (PreparedStatement statement = connection.prepareStatement(sql)) {
+			if(id>0){
+				statement.setInt(1, id);
+			}
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				Integer idNumber = rs.getInt(idColomnName());
+				list.add(idNumber);
+			}
+		} finally {
+			connectionDB.closeConnection(connection);
+		}
+		return list;
 	}
 
 

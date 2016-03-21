@@ -1,29 +1,34 @@
-apply plugin: “java”
+apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: “application”
+apply plugin: 'application'
 
-mainClassName = "com.epam.jmp.main.RunAppl"
+mainClassName = 'com.epam.jmp.main.RunAppl'
 
-repositories {
-	mavenCentral()
+// tag::repositories[]
+repositories { 
+    mavenCentral() 
 }
+// end::repositories[]
 
+// tag::jar[]
 jar {
-    baseName = 'likes-gradle-task'
+    baseName = 'gs-gradle'
     version =  '0.1.0'
-	manifest.attributes("Main-Class": mainClassName);
 }
+// end::jar[]
 
+// tag::dependencies[]
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-compileJava.options.fork = true
-compileJava.options.forkOptions.executable = System.getenv("JAVA_HOME")
 
 dependencies {
-	compile "mysql:mysql-connector-java:5.1.16"
-	testCompile "junit:junit:4.12"
+    compile 'mysql:mysql-connector-java:5.1.16'
+	testCompile 'junit:junit:4.12'
 }
+// end::dependencies[]
 
+// tag::wrapper[]
 task wrapper(type: Wrapper) {
     gradleVersion = '2.11'
 }
+// end::wrapper[]
