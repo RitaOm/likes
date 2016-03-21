@@ -18,7 +18,7 @@ public class LikeDAO extends AbstractDao<Like> {
 
 	@Override
 	public String getQuantityQuery() {
-		return "SELECT COUNT(*) FROM likes";
+		return "SELECT COUNT(*) AS count FROM likes;";
 	}
 
 	@Override

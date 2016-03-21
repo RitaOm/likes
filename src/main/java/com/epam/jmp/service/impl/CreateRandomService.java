@@ -84,7 +84,7 @@ public class CreateRandomService extends AbstractService implements
 		}
 		Friendship friendship = new Friendship();
 		friendship.setUserId1(list.get(user1IdNumber));
-		friendship.setUserId2(list.get(user2IdNumber));		
+		friendship.setUserId2(list.get(user2IdNumber));
 		return friendship;
 	}
 
@@ -116,22 +116,23 @@ public class CreateRandomService extends AbstractService implements
 			int postIdNumber = rand.nextInt(postIdsList.size());
 			Post post = postDAO.getById(postIdsList.get(postIdNumber));
 			int userId = 0;
-			while (true) {			
-				List<Integer> friendsOfUserList = friendshipDAO
-						.getIdsList(post.getUserId());
-				if (friendsOfUserList.size() > 0){
+			while (true) {
+				List<Integer> friendsOfUserList = friendshipDAO.getIdsList(post
+						.getUserId());
+				if (friendsOfUserList.size() > 0) {
 					int userIdNumber = rand.nextInt(friendsOfUserList.size());
 					userId = friendsOfUserList.get(userIdNumber);
 					break;
 				} else {
 					postIdNumber = rand.nextInt(postIdsList.size());
-					post = postDAO.getById(postIdNumber);					
-				}				
+					post = postDAO.getById(postIdNumber);
+				}
 			}
 			Like like = new Like();
 			like.setUserId(userId);
 			like.setPostId(postIdsList.get(postIdNumber));
-			Timestamp dateTime = dateGenerator.generateDateTimeFromInitDate(post.getDateTime().getTime());
+			Timestamp dateTime = dateGenerator
+					.generateDateTimeFromInitDate(post.getDateTime().getTime());
 			like.setDateTime(dateTime);
 			likeDAO.create(like);
 		} catch (SQLException e) {
@@ -145,17 +146,25 @@ public class CreateRandomService extends AbstractService implements
 		for (int i = 0; i < quantity; i++) {
 			createUser(null);
 		}
+		System.out.println("Random creation of " + quantity
+				+ " users is finished");
 		quantity = Properties.getNumber("friendshipsQuantity");
 		for (int i = 0; i < quantity; i++) {
 			createFriendship(null);
 		}
+		System.out.println("Random creation of " + quantity
+				+ " friendships is finished");
 		quantity = Properties.getNumber("postsQuantity");
 		for (int i = 0; i < quantity; i++) {
 			createPost(null);
 		}
+		System.out.println("Random creation of " + quantity
+				+ " posts is finished");
 		quantity = Properties.getNumber("likesQuantity");
 		for (int i = 0; i < quantity; i++) {
 			createLike(null);
 		}
+		System.out.println("Random creation of " + quantity
+				+ " likes is finished");
 	}
 }

@@ -18,12 +18,12 @@ public class PostDAO extends AbstractDao<Post> {
 
 	@Override
 	public String getQuantityQuery() {
-		return "SELECT COUNT(*) FROM posts";
+		return "SELECT COUNT(*) AS count FROM posts;";
 	}
 
 	@Override
 	public String getIdsListQuery() {
-		return "SELECT id FROM posts";
+		return "SELECT id FROM posts;";
 	}
 	@Override
 	public String getSelectQuery() {

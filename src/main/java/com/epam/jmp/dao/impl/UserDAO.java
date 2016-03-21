@@ -18,12 +18,12 @@ public class UserDAO extends AbstractDao<User> {
 
 	@Override
 	public String getQuantityQuery() {
-		return "SELECT COUNT(*) FROM users";
+		return "SELECT COUNT(*) AS count FROM users;";
 	}
 
 	@Override
 	public String getIdsListQuery() {
-		return "SELECT id FROM users";
+		return "SELECT id FROM users;";
 	}
 	@Override
 	public String getSelectQuery() {

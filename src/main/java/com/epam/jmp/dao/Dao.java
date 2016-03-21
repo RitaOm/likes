@@ -7,7 +7,7 @@ public interface Dao<T> {
 
 	public void create(T object)  throws SQLException;
 	
-	public int getQuantity()  throws SQLException;
+	public long getQuantity()  throws SQLException;
 	
 	public List<Integer> getIdsList(int id)  throws SQLException;
 

@@ -18,7 +18,7 @@ public class FriendshipDAO extends AbstractDao<Friendship> {
 
 	@Override
 	public String getQuantityQuery() {
-		return "SELECT COUNT(*) FROM friendships";
+		return "SELECT COUNT(*) AS count FROM friendships;";
 	}
 
 	@Override

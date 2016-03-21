@@ -13,17 +13,17 @@ import com.epam.jmp.connection.JDBCConnection;
 public abstract class AbstractDao<T> implements Dao<T> {
 
 	protected IconnectionDB connectionDB;
-		
+
 	public AbstractDao() {
 		connectionDB = JDBCConnection.getInstance();
 	}
 
 	public abstract String getCreateQuery();
-	
+
 	public abstract String getQuantityQuery();
-	
+
 	public abstract String getIdsListQuery();
-	
+
 	public abstract String getSelectQuery();
 
 	public abstract String idColomnName();
@@ -44,11 +44,21 @@ public abstract class AbstractDao<T> implements Dao<T> {
 			connectionDB.closeConnection(connection);
 		}
 	}
-	
+
 	@Override
-	public int getQuantity() throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+	public long getQuantity() throws SQLException {
+		Connection connection = connectionDB.getConnection();
+		long count = 0;
+		String sql = getQuantityQuery();
+		try (PreparedStatement statement = connection.prepareStatement(sql)) {
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				count = rs.getLong("count");
+			}
+		} finally {
+			connectionDB.closeConnection(connection);
+		}
+		return count;
 	}
 
 	@Override
@@ -57,7 +67,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
 		List<Integer> list = new ArrayList<Integer>();
 		String sql = getIdsListQuery();
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
-			if(id>0){
+			if (id > 0) {
 				statement.setInt(1, id);
 			}
 			ResultSet rs = statement.executeQuery();
@@ -70,7 +80,6 @@ public abstract class AbstractDao<T> implements Dao<T> {
 		}
 		return list;
 	}
-
 
 	@Override
 	public T getById(int id) throws SQLException {
