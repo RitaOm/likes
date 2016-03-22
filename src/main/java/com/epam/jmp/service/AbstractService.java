@@ -1,6 +1,6 @@
 package com.epam.jmp.service;
 
-import com.epam.jmp.service.impl.SQLException;
+import java.sql.SQLException;
 import com.epam.jmp.util.DateGenerator;
 import com.epam.jmp.util.TextGenerator;
 import com.epam.jmp.dao.impl.*;
